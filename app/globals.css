@@ -57,7 +57,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(23.84% 0.019 262.13);
   --primary: oklch(25.93% 0.018 262.17);
-  --primary-foreground: oklch(84.52% 0.000 0);
+  --primary-foreground: oklch(84.52% 0 0);
   --secondary: oklch(23.84% 0.019 262.13);
   --secondary-foreground: oklch(59.49% 0.038 263.43);
   --muted: oklch(62.73% 0.022 270.07);
@@ -124,14 +124,17 @@
   body {
     @apply bg-background text-foreground;
   }
+  .container-1200 {
+    @apply max-w-[1200px] px-4 xl:px-0 mx-auto;
+  }
 }
 
-.banner-bg{
+.banner-bg {
   background-image: url("./../assets/banner-bg.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
   height: auto;
-  min-height: 30vh;  
+  min-height: 30vh;
 }
