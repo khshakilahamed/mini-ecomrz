@@ -39,7 +39,7 @@ const Footer = () => {
               </h2>
               <div className="flex flex-col mt-5 space-y-3">
                 {companyMenu?.map((menu) => (
-                  <Link id={menu?.id} href={menu?.href ?? "#"}>
+                  <Link key={menu?.id} href={menu?.href ?? "#"}>
                     {menu?.label}
                   </Link>
                 ))}
@@ -52,7 +52,7 @@ const Footer = () => {
               </h2>
               <div className="flex flex-col mt-5 space-y-3">
                 {services?.map((menu) => (
-                  <Link id={menu?.id} href={menu?.href ?? "#"}>
+                  <Link key={menu?.id} href={menu?.href ?? "#"}>
                     {menu?.label}
                   </Link>
                 ))}

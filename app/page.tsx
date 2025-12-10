@@ -1,5 +1,6 @@
 import Banner from "@/components/Banner";
 import CarDiagnostic from "@/components/CarDiagnostic";
+import FeaturedProduct from "@/components/FeaturedProduct";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ContactHeader from "@/components/ui/ContactHeader";
@@ -16,6 +17,7 @@ export default function Home() {
       <Banner/>
       <CarDiagnostic/>
       <WhyChooseUs/>
+      <FeaturedProduct/>
       <Footer/>
     </>
   );

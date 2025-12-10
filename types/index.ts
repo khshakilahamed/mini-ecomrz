@@ -16,3 +16,23 @@ export type TWhyChooseUs = {
       description: string;
       image: StaticImageData;
 }
+
+export type TFilteredProductItem = {
+      id: string;
+      label: string;
+      value: string;
+}
+
+export type TProduct = {
+  id: string
+  title: string
+  rating: number
+  oldPrice: number
+  newPrice: number
+  isNew: boolean
+  isPopular: boolean
+  isSold: boolean
+  image: string
+  category?: string
+  description?: string
+}

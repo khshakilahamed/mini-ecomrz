@@ -153,3 +153,12 @@
   -webkit-text-stroke: 1px #253146;
   /* text-shadow: 2px rgb(3, 3, 3); */
 }
+
+
+.hide-scrollbar {
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;          /* Chrome, Safari, Edge */
+}
