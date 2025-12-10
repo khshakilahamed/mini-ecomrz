@@ -21,17 +21,17 @@ const NavMenuBar = () => {
   };
 
   return (
-    <div className="">
+    <div className="bg-primary">
       <Menubar className="bg-transparent border-0 max-w-[1200px] px-4 xl:px-0 mx-auto text-primary-foreground hidden md:flex items-center justify-evenly py-7">
         {navMenuItems?.map((menu) => (
           <MenubarMenu key={menu?.id}>
-            <MenubarTrigger className="space-x-1 text-[17px] font-semibold">
+            <MenubarTrigger className="space-x-1 text-[17px] font-semibold data-[state=open]:bg-secondary data-[state=open]:text-white">
               {menu?.label}{" "}
               {menu?.subMenus?.length > 0 && <IoChevronDownOutline />}
             </MenubarTrigger>
 
             {menu?.subMenus?.length > 0 && (
-              <MenubarContent>
+              <MenubarContent className="bg-primary text-white">
                 {menu.subMenus.map((subMenu) => (
                   <MenubarItem key={subMenu.id}>{subMenu.label}</MenubarItem>
                 ))}

@@ -11,7 +11,7 @@ const CarDiagnostic = () => {
         <h3 className="text-sm sm:text-xl lg:text-2xl capitalize text-primary-foreground">
           Car Diagnostic
         </h3>
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl text-white text-bold">Tools and Scanners</h2>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl text-white font-bold">Tools and Scanners</h2>
       </div>               
 
       <div className="flex flex-col sm:flex-row items-center gap-5 lg:gap-12 mt-10 sm:mt-16 lg:mt-20">
