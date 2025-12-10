@@ -1,9 +1,9 @@
-import ContactHeader from "@/components/ui/ContactHeader";
+import Header from "@/components/Header";
 
 export default function Home() {
   return (
     <div>
-      <ContactHeader/>
+      <Header/>
     </div>
   );
 }

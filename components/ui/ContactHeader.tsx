@@ -12,7 +12,7 @@ const ContactHeader = () => {
 
   return (
     <div className="bg-secondary border border-b">
-      <div className="max-w-[1200px]  mx-auto py-4 flex flex-wrap justify-between items-center">
+      <div className="max-w-[1200px] px-4 xl:px-0 mx-auto py-4 flex flex-wrap justify-between items-center">
         <div className="hidden sm:flex text-primary-foreground text-sm text-wrap">
           {contactMenu?.map((item, index) => (
             <span key={item.id}>
@@ -30,15 +30,15 @@ const ContactHeader = () => {
             </span>
           ))}
         </div>
-        <div className="text-secondary-foreground flex flex-wrap items-center space-x-5">
+        <div className="text-secondary-foreground flex flex-wrap items-center justify-between xs:justify-start space-x-5 w-full xs:w-auto">
           <div className="flex items-center gap-2">
             <IoMailOpen />
             <a href="mailto:contact@abc.om" className="text-primary-foreground">
               contact@abc.com
             </a>
           </div>
-          <span>|</span>
-          <div className="flex items-center space-x-5 text-secondary-foreground ">
+          <span className="hidden xs:flex">|</span>
+          <div className="flex items-center space-x-3 xs:space-x-5 text-secondary-foreground ">
             <FaXTwitter />
             <FaFacebookF />
             <FaInstagram />

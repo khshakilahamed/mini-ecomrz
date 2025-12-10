@@ -1,21 +1,23 @@
+
+
 export const contactMenu = [
       {
-            id: 1,
+            id: "1",
             label: "Home",
             href: "/",
       },
       {
-            id: 2,
+            id: "2",
             label: "About",
             href: "/about",
       },
       {
-            id: 3,
+            id: "3",
             label: "Blog",
             href: "/blog",
       },
       {
-            id: 4,
+            id: "4",
             label: "Contact",
             href: "/contact",
       },
