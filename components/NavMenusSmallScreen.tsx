@@ -14,7 +14,7 @@ import { Button } from "./ui/button";
 import { IoMenu, IoMenuSharp } from "react-icons/io5";
 
 const NavMenusSmallScreen = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -32,7 +32,7 @@ const NavMenusSmallScreen = () => {
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger className="max-w-max md:hidden">
+      <SheetTrigger className="max-w-max">
         <Button variant="ghost" className="bg-transparent px-2 w-6">
           <IoMenu className="text-white text-5xl" />
         </Button>

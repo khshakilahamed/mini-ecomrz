@@ -1,35 +1,16 @@
-"use client";
-
 import { Input } from "./ui/input";
 import CellPhone from "./../assets/cell-phone.png";
 import Image from "next/image";
 import { FaRegHeart } from "react-icons/fa6";
 import { IoMdLogIn } from "react-icons/io";
 import { GrCart } from "react-icons/gr";
-import YourLogo from "./../assets/your-logo.png";
+import logo from "./../assets/your-logo.png";
 import { Label } from "./ui/label";
 import { BiSearch } from "react-icons/bi";
 import NavMenuBar from "./NavMenuBar";
 import NavMenusSmallScreen from "./NavMenusSmallScreen";
-import { useEffect, useState } from "react";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 1024) {
-        setIsOpen(false);
-      }
-    };
-    window.addEventListener("resize", handleResize);
-    // Close the Sheet on initial load if screen is less than lg
-    handleResize();
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
     <>
       <div className="bg-secondary">
@@ -37,9 +18,11 @@ const Navbar = () => {
           {/* LEFT: Logo + Search */}
           <div className="flex items-center xs:space-x-10 flex-1">
             <div className="flex items-center space-x-1.5">
-              <NavMenusSmallScreen />
+              <span className="lg:hidden">
+                <NavMenusSmallScreen />
+              </span>
               <Image
-                src={YourLogo}
+                src={logo}
                 alt="company-logo"
                 width={210}
                 height={59}
@@ -89,7 +72,7 @@ const Navbar = () => {
         </div>
       </div>
       {/* Navbar Menus */}
-      <div className="hidden md:block">
+      <div className="hidden lg:block">
         <NavMenuBar />
       </div>
     </>

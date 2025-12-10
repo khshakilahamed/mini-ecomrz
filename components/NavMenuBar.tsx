@@ -22,10 +22,10 @@ const NavMenuBar = () => {
 
   return (
     <div className="">
-      <Menubar className="bg-transparent border-0 max-w-[1200px] px-4 xl:px-0 mx-auto text-primary-foreground hidden md:flex items-center justify-evenly py-3">
+      <Menubar className="bg-transparent border-0 max-w-[1200px] px-4 xl:px-0 mx-auto text-primary-foreground hidden md:flex items-center justify-evenly py-7">
         {navMenuItems?.map((menu) => (
           <MenubarMenu key={menu?.id}>
-            <MenubarTrigger className="space-x-1">
+            <MenubarTrigger className="space-x-1 text-[17px] font-semibold">
               {menu?.label}{" "}
               {menu?.subMenus?.length > 0 && <IoChevronDownOutline />}
             </MenubarTrigger>
