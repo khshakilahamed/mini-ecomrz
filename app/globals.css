@@ -147,3 +147,9 @@
   width: 100%;
   height: auto;
 }
+
+.text-stroke {
+  color: transparent;
+  -webkit-text-stroke: 1px #253146;
+  /* text-shadow: 2px rgb(3, 3, 3); */
+}

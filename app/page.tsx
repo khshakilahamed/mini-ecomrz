@@ -1,9 +1,9 @@
 import Banner from "@/components/Banner";
 import CarDiagnostic from "@/components/CarDiagnostic";
 import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import ContactHeader from "@/components/ui/ContactHeader";
+import WhyChooseUs from "@/components/WhyChooseUs";
 
 export default function Home() {
   return (
@@ -15,6 +15,7 @@ export default function Home() {
       </div>
       <Banner/>
       <CarDiagnostic/>
+      <WhyChooseUs/>
       <Footer/>
     </>
   );

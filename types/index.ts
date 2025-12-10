@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+
 export type TMenu = {
       id: string;
       label: string;
@@ -6,4 +8,11 @@ export type TMenu = {
 
 export type TContactMenu = TMenu & {
       subMenus: TMenu[]
+}
+
+export type TWhyChooseUs = {
+      id: string;
+      title: string;
+      description: string;
+      image: StaticImageData;
 }

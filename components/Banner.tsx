@@ -80,10 +80,10 @@ const Banner = () => {
         </div>
 
         {/* buttons */}
-        <CarouselPrevious className="absolute left-2 xl:left-0 bg-transparent text-white border-white cursor-pointer size-6 md:size-8">
+        <CarouselPrevious className="absolute left-2 xl:left-0 2xl:-left-20 bg-transparent text-white border-white cursor-pointer size-6 md:size-8">
           <FaAngleLeft className="text-white text-[10px] md:text-3xl" />
         </CarouselPrevious>
-        <CarouselNext className="absolute right-2 xl:right-0  bg-transparent text-white border-white cursor-pointer size-6 md:size-8">
+        <CarouselNext className="absolute right-2 xl:right-0 2xl:-right-20  bg-transparent text-white border-white cursor-pointer size-6 md:size-8">
           <FaAngleRight className="text-white text-[10px] md:text-3xl" />
         </CarouselNext>
       </Carousel>
