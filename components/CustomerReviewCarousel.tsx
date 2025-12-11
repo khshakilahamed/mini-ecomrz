@@ -55,9 +55,12 @@ const CustomerReviewCarousel = ({
   };
 
   return (
-    <div className={cn("mt-20", className)}>
+    <div className={cn("mt-10 sm:mt-16 lg:mt-20", className)}>
       {/* Main Review Carousel */}
-      <Carousel setApi={setApi} className="w-full bg-[#1F2632] p-6 sm:p-10 rounded">
+      <Carousel
+        setApi={setApi}
+        className="w-full bg-[#1F2632] p-6 sm:p-10 rounded"
+      >
         <CarouselContent>
           {customerReviews?.map((review) => (
             <CarouselItem key={review.id}>
@@ -86,7 +89,9 @@ const CustomerReviewCarousel = ({
 
       {/* Avatar Carousel */}
       <div className="relative">
-        <Carousel className="w-full">
+        <Carousel
+          className="w-full"
+        >
           <CarouselContent className="flex my-1 relative overflow-visible">
             {/* Moving Arrow */}
             <div
@@ -119,7 +124,8 @@ const CustomerReviewCarousel = ({
                   <div>
                     <h2 className="text-2xl font-bold">{review.name}</h2>
                     <h4 className="text-secondary-foreground font-semibold">
-                      <span className="capitalize">{review.designation}</span> at
+                      <span className="capitalize">{review.designation}</span>{" "}
+                      at
                     </h4>
                     <h3 className="text-accent font-semibold">
                       {review.companyName}
