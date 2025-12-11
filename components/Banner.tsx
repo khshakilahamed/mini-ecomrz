@@ -14,6 +14,7 @@ import BannerHeadline from "./BannerHeadline";
 import TopDonPhoenix from "./../assets/topdon-phoenix.png";
 import Image from "next/image";
 import { Button } from "./ui/button";
+import Autoplay from "embla-carousel-autoplay";
 
 const Banner = () => {
   const [api, setApi] = useState<CarouselApi>();
@@ -34,6 +35,15 @@ const Banner = () => {
   return (
     <div className="bg-secondary text-primary-foreground banner-bg">
       <Carousel
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+        plugins={[
+          Autoplay({
+            delay: 2000,
+          }),
+        ]}
         setApi={setApi}
         className="max-w-[1200px] px-2 xl:px-10 mx-auto relative min-h-[30vh]  md:min-h-[60vh]"
       >
@@ -57,10 +67,16 @@ const Banner = () => {
                   2 which offers excellent value for money.
                 </p>
 
-                <Button className="bg-destructive uppercase px-4 sm:px-6 lg:px-8 py-3 sm:py-5 lg:py-6 lg:mt-5 text-white">learn more</Button>
+                <Button className="bg-destructive uppercase px-4 sm:px-6 lg:px-8 py-3 sm:py-5 lg:py-6 lg:mt-5 text-white">
+                  learn more
+                </Button>
               </div>
               <div className=" w-1/3 sm:w-2/5 md:w-1/2">
-                <Image src={TopDonPhoenix} alt="product" className="w-full h-full" />
+                <Image
+                  src={TopDonPhoenix}
+                  alt="product"
+                  className="w-full h-full"
+                />
               </div>
             </CarouselItem>
           ))}

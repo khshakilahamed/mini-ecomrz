@@ -50,8 +50,8 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(23.84% 0.019 262.13);
+  --background: oklch(25.48% 0.021 260.58);
+  --foreground: oklch(84.52% 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(23.84% 0.019 262.13);
   --popover: oklch(1 0 0);
@@ -154,11 +154,15 @@
   /* text-shadow: 2px rgb(3, 3, 3); */
 }
 
-
 .hide-scrollbar {
-  scrollbar-width: none;  /* Firefox */
+  scrollbar-width: none; /* Firefox */
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-  display: none;          /* Chrome, Safari, Edge */
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.conversion-arrow {
+  background: #1F2632;
+  clip-path: polygon(43% 0, 0 0, 0 100%);
 }

@@ -63,7 +63,7 @@ const FeaturedProduct = () => {
   return (
     <div>
       <div className="container-1200 py-16 sm:py-20 border-b">
-        <h2 className="text-3xl lg:text-4xl text-center sm:text-start text-white font-bold uppercase italic">
+        <h2 className="text-3xl lg:text-[34px] text-center sm:text-start text-white font-bold uppercase italic">
           Featured Products
         </h2>
 

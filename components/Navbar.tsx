@@ -62,7 +62,7 @@ const Navbar = () => {
             <div className="flex items-center gap-5 order-1 lg:order-2">
               <button className="hidden md:flex items-center gap-2 text-primary-foreground">
                 <IoMdLogIn /> Account
-              </button>
+              </button> 
               <BiSearch className="flex sm:hidden text-[20px] sm:text-[26px] text-primary-foreground" />
               <FaRegHeart className="hidden sm:flex text-[20px] sm:text-[26px] text-primary-foreground" />
               <GrCart className="flex text-[20px] sm:text-[26px] text-primary-foreground" />

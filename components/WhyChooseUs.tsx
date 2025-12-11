@@ -5,7 +5,7 @@ const WhyChooseUs = () => {
   return (
     <div>
       <div className="container-1200 py-16 sm:py-20 border-b">
-        <h2 className="text-3xl lg:text-4xl text-center sm:text-start text-white font-bold uppercase italic">
+        <h2 className="text-[29px] lg:text-[34px] text-center sm:text-start text-white font-bold uppercase italic">
           Why Choose Us?
         </h2>
 
@@ -22,7 +22,7 @@ const WhyChooseUs = () => {
                   />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-white text-2xl lg:text-3xl font-semibold">
+                  <h3 className="text-white text-[22px] lg:text-3xl font-semibold">
                     {item?.title}
                   </h3>
                 </div>
