@@ -163,7 +163,7 @@ const SearchModelSmallScreen = ({
                   type="button"
                   onClick={() => handleSuggestionClick(suggestion)}
                   className={`w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2 ${
-                    index === selectedIndex ? "bg-gray-200" : ""
+                    index === selectedIndex ? "bg-accent" : ""
                   }`}
                 >
                   <BiSearch className="text-gray-400" />
