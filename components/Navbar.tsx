@@ -13,12 +13,11 @@ import NavMenuBar from "./NavMenuBar";
 import NavMenusSmallScreen from "./NavMenusSmallScreen";
 import CartWishlistSheet from "./CartWishlistSheet";
 import { useState } from "react";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [tabValue, setTabValue] = useState<"cart" | "wishlist">("cart");
-
-  console.log("navbar: ", tabValue);
 
   return (
     <>
@@ -30,13 +29,15 @@ const Navbar = () => {
               <span className="lg:hidden">
                 <NavMenusSmallScreen />
               </span>
-              <Image
-                src={logo}
-                alt="company-logo"
-                width={210}
-                height={59}
-                className="w-[165px] md:w-[180px] lg:w-[210px] h-[46px] md:h-[50px] lg:h-[59px]"
-              />
+              <Link href={"/"}>
+                <Image
+                  src={logo}
+                  alt="company-logo"
+                  width={210}
+                  height={59}
+                  className="w-[165px] md:w-[180px] lg:w-[210px] h-[46px] md:h-[50px] lg:h-[59px]"
+                />
+              </Link>
             </div>
             <div className="hidden sm:flex flex-1 relative">
               <Label

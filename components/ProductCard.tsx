@@ -2,10 +2,7 @@
 
 import { Heart, ShoppingCart, Star } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
-import SoldOutBadge from "./../assets/sold-out.png";
-import NewBadge from "./../assets/new.png";
-import SaleBadge from "./../assets/sale.png";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { TProduct } from "@/types";
 import ProductBadge from "./ProductBadge";
@@ -17,11 +14,16 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const { addToCart } = useCartWishlist();
-
+  const { addToCart, wishlist, addToWishlist, deleteFromWishlist } =
+    useCartWishlist();
   const [isWishlisted, setIsWishlisted] = useState(false);
   const { id, title, rating, oldPrice, newPrice, isSold, image } =
     product || {};
+
+  useLayoutEffect(() => {
+    const exist = wishlist?.some((item) => item.id === id);
+    setIsWishlisted(exist);
+  }, [wishlist, id]);
 
   return (
     <div className="border rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col h-full">
@@ -42,6 +44,13 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {/* Wishlist Button */}
         <button
+          onClick={() => {
+            if (isWishlisted) {
+              deleteFromWishlist(product?.id);
+            } else {
+              addToWishlist(product);
+            }
+          }}
           className="absolute top-3 left-3 bg-[#253146] hover:bg-[#253146]/65 text-white rounded-md p-2 transition-all cursor-pointer"
           aria-label="Add to wishlist"
         >

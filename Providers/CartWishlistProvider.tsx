@@ -1,5 +1,6 @@
 "use client";
 
+import { getFromLocalStorage, saveToLocalStorage } from "@/lib/utils";
 import { TCartItem, TCartWishlistContext, TProduct } from "@/types";
 import {
   createContext,
@@ -9,7 +10,9 @@ import {
   ReactNode,
 } from "react";
 
-export const CartWishlistContext = createContext<TCartWishlistContext | null>(null);
+export const CartWishlistContext = createContext<TCartWishlistContext | null>(
+  null
+);
 
 export function CartWishlistProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<TCartItem[]>([]);
@@ -19,23 +22,12 @@ export function CartWishlistProvider({ children }: { children: ReactNode }) {
       Load From LocalStorage
   ------------------------------ */
   useEffect(() => {
-    const storedCart = localStorage.getItem("cart");
-    const storedWishlist = localStorage.getItem("wishlist");
+    const storedCart = getFromLocalStorage("cart");
+    const storedWishlist = getFromLocalStorage("wishlist");
 
-    if (storedCart) setCart(JSON.parse(storedCart));
-    if (storedWishlist) setWishlist(JSON.parse(storedWishlist));
+    if (storedCart) setCart(storedCart);
+    if (storedWishlist) setWishlist(storedWishlist);
   }, []);
-
-  /* ------------------------------
-      Save To LocalStorage
-  ------------------------------ */
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
-
-  useEffect(() => {
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-  }, [wishlist]);
 
   /* ------------------------------
       CART FUNCTIONS
@@ -46,40 +38,56 @@ export function CartWishlistProvider({ children }: { children: ReactNode }) {
       const exists = prev.find((p) => p.id === item.id);
 
       if (exists) {
-        return prev.map((p) =>
+        const updateQuantity = prev.map((p) =>
           p.id === item.id ? { ...p, quantity: p.quantity + 1 } : p
         );
+        saveToLocalStorage("cart", updateQuantity);
+
+        return updateQuantity;
       }
 
-      return [...prev, { ...item, quantity: 1 }];
+      const newData = [...prev, { ...item, quantity: 1 }];
+      saveToLocalStorage("cart", newData);
+
+      return newData;
     });
   }, []);
 
   const updateCartQuantity = useCallback(
     (id: string | number, quantity: number) => {
-      setCart((prev) =>
-        prev.map((item) =>
-          item.id === id
-            ? { ...item, quantity: Math.max(quantity, 1) }
-            : item
-        )
-      );
+      setCart((prev) => {
+        const updatedData = prev.map((item) =>
+          item.id === id ? { ...item, quantity: Math.max(quantity, 1) } : item
+        );
+        saveToLocalStorage("cart", updatedData);
+
+        return updatedData;
+      });
     },
     []
   );
 
   const decreaseCartQuantity = useCallback((id: string | number) => {
-    setCart((prev) =>
-      prev
+    setCart((prev) => {
+      const updatedData = prev
         .map((item) =>
           item.id === id ? { ...item, quantity: item.quantity - 1 } : item
         )
-        .filter((item) => item.quantity > 0)
-    );
+        .filter((item) => item.quantity > 0);
+
+      saveToLocalStorage("cart", updatedData);
+
+      return updatedData;
+    });
   }, []);
 
   const deleteFromCart = useCallback((id: string | number) => {
-    setCart((prev) => prev.filter((item) => item.id !== id));
+    setCart((prev) => {
+      const updatedData = prev.filter((item) => item.id !== id);
+      saveToLocalStorage("cart", updatedData);
+
+      return updatedData;
+    });
   }, []);
 
   /* ------------------------------
@@ -90,12 +98,20 @@ export function CartWishlistProvider({ children }: { children: ReactNode }) {
     setWishlist((prev) => {
       const exists = prev.some((p) => p.id === item.id);
       if (exists) return prev;
-      return [...prev, item];
+
+      const updated = [...prev, item];
+      saveToLocalStorage("wishlist", updated);
+      return updated;
     });
   }, []);
 
   const deleteFromWishlist = useCallback((id: string | number) => {
-    setWishlist((prev) => prev.filter((item) => item.id !== id));
+    setWishlist((prev) => {
+      const updated = prev.filter((item) => item.id !== id);
+      saveToLocalStorage("wishlist", updated);
+
+      return updated;
+    });
   }, []);
 
   const moveWishlistToCart = useCallback(

@@ -8,23 +8,9 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { TCartItem } from "@/types";
 
-interface CartItem {
-  id: string;
-  title: string;
-  rating: number;
-  oldPrice: number;
-  newPrice: number;
-  isNew: boolean;
-  isPopular: boolean;
-  isSold: boolean;
-  image: string;
-  category: string;
-  description: string;
-  quantity: number;
-}
-
 const CartTab = () => {
-  const { cart, decreaseCartQuantity, addToCart } = useCartWishlist();
+  const { cart, decreaseCartQuantity, addToCart, deleteFromCart } =
+    useCartWishlist();
 
   // Calculate totals
   const subtotal = cart.reduce(
@@ -131,6 +117,7 @@ const CartTab = () => {
                 </div>
 
                 <Button
+                  onClick={() => deleteFromCart(item?.id)}
                   variant="ghost"
                   size="icon"
                   className="h-8 w-8 text-red-500 hover:text-red-600 hover:bg-red-500/10"
