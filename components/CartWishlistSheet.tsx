@@ -3,7 +3,6 @@
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import { useEffect, useState } from "react";
-import { useCartWishlist } from "@/hooks/useCartWishlist";
 import CartTab from "./CartTab";
 import WishlistTab from "./WishlistTab";
 

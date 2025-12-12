@@ -2,6 +2,7 @@ import { productFilteredItems } from "@/constants/product";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 type TProductFilteredProps = {
   filterValue: string;
@@ -36,12 +37,12 @@ const ProductFilter = ({
             {item?.label}
           </Button>
         ))}
-        <Button
-          variant={"link"}
-          className="cursor-pointer text-secondary-foreground no-underline"
+        <Link
+          href={"/products"}
+          className="text-secondary-foreground"
         >
           See All Products<span className="text-xl">{">"}</span>{" "}
-        </Button>
+        </Link>
       </div>
       <div className="flex items-center gap-1 text-white">
         <Button

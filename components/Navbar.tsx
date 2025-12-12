@@ -1,23 +1,26 @@
 "use client";
 
-import { Input } from "./ui/input";
 import CellPhone from "./../assets/cell-phone.png";
 import Image from "next/image";
 import { FaRegHeart } from "react-icons/fa6";
 import { IoMdLogIn } from "react-icons/io";
 import { GrCart } from "react-icons/gr";
 import logo from "./../assets/your-logo.png";
-import { Label } from "./ui/label";
 import { BiSearch } from "react-icons/bi";
 import NavMenuBar from "./NavMenuBar";
 import NavMenusSmallScreen from "./NavMenusSmallScreen";
 import CartWishlistSheet from "./CartWishlistSheet";
 import { useState } from "react";
 import Link from "next/link";
+import SearchBar from "./SearchBar";
+import SearchModelSmallScreen from "./SearchModelSmallScreen";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const [tabValue, setTabValue] = useState<"cart" | "wishlist">("cart");
+
+  console.log("isOpenModal: ", isOpenModal);
 
   return (
     <>
@@ -39,20 +42,7 @@ const Navbar = () => {
                 />
               </Link>
             </div>
-            <div className="hidden sm:flex flex-1 relative">
-              <Label
-                htmlFor="searchBar"
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-xl"
-              >
-                <BiSearch />
-              </Label>
-
-              <Input
-                id="searchBar"
-                type="search"
-                className="border-2 py-5 pr-10"
-              />
-            </div>
+            <SearchBar />
           </div>
 
           {/* RIGHT: Icons + Phone (Phone hidden on small screens) */}
@@ -70,10 +60,13 @@ const Navbar = () => {
 
             {/* Icons section */}
             <div className="flex items-center gap-2 xs:gap-5 order-1 lg:order-2">
+              <BiSearch
+                onClick={() => setIsOpenModal(true)}
+                className="flex sm:hidden text-[20px] sm:text-[26px] text-primary-foreground"
+              />
               <button className="hidden md:flex items-center gap-2 text-primary-foreground">
                 <IoMdLogIn /> Account
               </button>
-              <BiSearch className="flex sm:hidden text-[20px] sm:text-[26px] text-primary-foreground" />
               <FaRegHeart
                 onClick={() => {
                   setIsOpen(true);
@@ -102,6 +95,11 @@ const Navbar = () => {
         isOpen={isOpen}
         onOpenChange={setIsOpen}
         tabValue={tabValue}
+      />
+
+      <SearchModelSmallScreen
+        isOpen={isOpenModal}
+        onOpenChange={setIsOpenModal}
       />
     </>
   );
