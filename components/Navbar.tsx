@@ -1,3 +1,5 @@
+"use client";
+
 import { Input } from "./ui/input";
 import CellPhone from "./../assets/cell-phone.png";
 import Image from "next/image";
@@ -9,8 +11,15 @@ import { Label } from "./ui/label";
 import { BiSearch } from "react-icons/bi";
 import NavMenuBar from "./NavMenuBar";
 import NavMenusSmallScreen from "./NavMenusSmallScreen";
+import CartWishlistSheet from "./CartWishlistSheet";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [tabValue, setTabValue] = useState<"cart" | "wishlist">("cart");
+
+  console.log("navbar: ", tabValue);
+
   return (
     <>
       <div className="bg-secondary">
@@ -59,13 +68,25 @@ const Navbar = () => {
             </div>
 
             {/* Icons section */}
-            <div className="flex items-center gap-5 order-1 lg:order-2">
+            <div className="flex items-center gap-2 xs:gap-5 order-1 lg:order-2">
               <button className="hidden md:flex items-center gap-2 text-primary-foreground">
                 <IoMdLogIn /> Account
-              </button> 
+              </button>
               <BiSearch className="flex sm:hidden text-[20px] sm:text-[26px] text-primary-foreground" />
-              <FaRegHeart className="hidden sm:flex text-[20px] sm:text-[26px] text-primary-foreground" />
-              <GrCart className="flex text-[20px] sm:text-[26px] text-primary-foreground" />
+              <FaRegHeart
+                onClick={() => {
+                  setIsOpen(true);
+                  setTabValue("wishlist");
+                }}
+                className="flex text-[20px] sm:text-[26px] text-primary-foreground"
+              />
+              <GrCart
+                onClick={() => {
+                  setIsOpen(true);
+                  setTabValue("cart");
+                }}
+                className="flex text-[20px] sm:text-[26px] text-primary-foreground"
+              />
               <IoMdLogIn className="flex md:hidden text-[20px] sm:text-[26px] text-primary-foreground" />
             </div>
           </div>
@@ -75,6 +96,12 @@ const Navbar = () => {
       <div className="hidden lg:block">
         <NavMenuBar />
       </div>
+
+      <CartWishlistSheet
+        isOpen={isOpen}
+        onOpenChange={setIsOpen}
+        tabValue={tabValue}
+      />
     </>
   );
 };

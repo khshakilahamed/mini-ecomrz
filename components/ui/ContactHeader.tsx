@@ -30,14 +30,14 @@ const ContactHeader = () => {
             </span>
           ))}
         </div>
-        <div className="text-secondary-foreground flex flex-wrap items-center justify-between xs:justify-start space-x-5 w-full xs:w-auto">
+        <div className="text-secondary-foreground flex flex-wrap items-center justify-between sm:justify-start space-x-5 w-full sm:w-auto">
           <div className="flex items-center gap-2">
             <IoMailOpen />
             <a href="mailto:contact@abc.om" className="text-primary-foreground">
               contact@abc.com
             </a>
           </div>
-          <span className="hidden xs:flex">|</span>
+          <span className="hidden sm:flex">|</span>
           <div className="flex items-center space-x-3 xs:space-x-5 text-secondary-foreground ">
             <FaXTwitter />
             <FaFacebookF />

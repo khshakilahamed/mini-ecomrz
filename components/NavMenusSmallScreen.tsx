@@ -37,7 +37,7 @@ const NavMenusSmallScreen = () => {
           <IoMenu className="text-white text-5xl" />
         </Button>
       </SheetTrigger>
-      <SheetContent className="text-primary-foreground bg-primary" side="left">
+      <SheetContent className="text-primary-foreground bg-primary w-full xs:w-auto" side="left">
         <SheetHeader>
           <SheetTitle className="text-white">Menu Items</SheetTitle>
         </SheetHeader>

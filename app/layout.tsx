@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Poppins} from "next/font/google";
+import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
+import ContactHeader from "@/components/ui/ContactHeader";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { CartWishlistProvider } from "@/Providers/CartWishlistProvider";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +20,7 @@ const geistMono = Geist_Mono({
 const poppins = Poppins({
   variable: "--font-geist-poppins",
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -33,7 +38,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased font-poppins bg-primary`}
       >
-        {children}
+        <CartWishlistProvider>
+          <ContactHeader />
+          <div className="sticky top-0 z-50 shadow-md">
+            <Navbar />
+          </div>
+          {children}
+          <Footer />
+          <Toaster position="top-right"/>
+        </CartWishlistProvider>
       </body>
     </html>
   );

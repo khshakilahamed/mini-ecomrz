@@ -17,14 +17,6 @@ const FeaturedProduct = () => {
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
 
-  const [cart, setCart] = useState<string[]>([]);
-
-  const handleAddToCart = (productId: string) => {
-    setCart([...cart, productId]);
-    // Here you would typically trigger a toast notification
-    console.log(`Product ${productId} added to cart`);
-  };
-
   /* const onSelect = () => {
     if (!api) return;
     setCanScrollPrev(api.canScrollPrev());
@@ -86,7 +78,7 @@ const FeaturedProduct = () => {
           />
 
           <CarouselContent>
-            {products.map((product) => (
+            {products.slice(0, 6).map((product) => (
               <CarouselItem
                 key={product.id}
                 className="xs:basis-1/2 md:basis-1/3 lg:basis-1/4 bg-transparent"
@@ -94,7 +86,6 @@ const FeaturedProduct = () => {
                 <ProductCard
                   key={product.id}
                   product={product}
-                  onAddToCart={() => handleAddToCart(product.id)}
                 />
               </CarouselItem>
             ))}

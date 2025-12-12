@@ -8,72 +8,20 @@ import NewBadge from "./../assets/new.png";
 import SaleBadge from "./../assets/sale.png";
 import { Button } from "./ui/button";
 import { TProduct } from "@/types";
+import ProductBadge from "./ProductBadge";
+import { useCartWishlist } from "@/hooks/useCartWishlist";
+import { toast } from "sonner";
 
 interface ProductCardProps {
   product: TProduct;
-  onAddToCart?: () => void;
-  onWishlist?: () => void;
 }
 
-export default function ProductCard({
-  product,
-  onAddToCart,
-  onWishlist,
-}: ProductCardProps) {
+export default function ProductCard({ product }: ProductCardProps) {
+  const { addToCart } = useCartWishlist();
+
   const [isWishlisted, setIsWishlisted] = useState(false);
-  const {
-    id,
-    title,
-    rating,
-    oldPrice,
-    newPrice,
-    isNew,
-    isPopular,
-    isSold,
-    image,
-  } = product || {};
-
-  const handleWishlistClick = () => {
-    setIsWishlisted(!isWishlisted);
-    onWishlist?.();
-  };
-
-  const getBadge = () => {
-    if (isSold) {
-      return (
-        <Image
-          src={SoldOutBadge}
-          alt="sold-out"
-          width={100}
-          height={24}
-          className="absolute top-3 right-3"
-        />
-      );
-    }
-    if (isNew) {
-      return (
-        <Image
-          src={NewBadge}
-          alt="sold-out"
-          width={56}
-          height={21}
-          className="absolute top-3 right-3"
-        />
-      );
-    }
-    if (isPopular) {
-      return (
-        <Image
-          src={SaleBadge}
-          alt="sold-out"
-          width={56}
-          height={21}
-          className="absolute top-3 right-3"
-        />
-      );
-    }
-    return "";
-  };
+  const { id, title, rating, oldPrice, newPrice, isSold, image } =
+    product || {};
 
   return (
     <div className="border rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col h-full">
@@ -88,11 +36,12 @@ export default function ProductCard({
         />
 
         {/* Badge */}
-        {getBadge()}
+        <div className="absolute top-3 right-3">
+          <ProductBadge product={product} />
+        </div>
 
         {/* Wishlist Button */}
         <button
-          onClick={handleWishlistClick}
           className="absolute top-3 left-3 bg-[#253146] hover:bg-[#253146]/65 text-white rounded-md p-2 transition-all cursor-pointer"
           aria-label="Add to wishlist"
         >
@@ -145,7 +94,10 @@ export default function ProductCard({
 
         {/* Add to Cart Button */}
         <Button
-          onClick={onAddToCart}
+          onClick={() => {
+            addToCart(product);
+            toast.success("Successfully added.");
+          }}
           disabled={isSold}
           className="mt-auto text-secondary-foreground bg-[#282E3A] hover:bg-[#282E3A]/65 rounded-full py-6"
         >

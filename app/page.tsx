@@ -12,10 +12,7 @@ export default function Home() {
   return (
     <>
       {/* <Header/> */}
-      <ContactHeader/>
-      <div className="sticky top-0 z-50 shadow-md">
-        <Navbar/>
-      </div>
+      
       <Banner/>
       <CarDiagnostic/>
       <WhyChooseUs/>
@@ -24,7 +21,6 @@ export default function Home() {
       <p className="w-full h-0.5 sm:h-1.5 bg-[#1A1F28]"></p>
       <CarBrands/>
       <p className="sm:hidden w-full h-1 bg-[#1A1F28]"></p>
-      <Footer/>
     </>
   );
 }
