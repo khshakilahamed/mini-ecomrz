@@ -76,7 +76,6 @@ const SearchModelSmallScreen = ({
     e.preventDefault();
     const term =
       selectedIndex >= 0 ? filteredSuggestions[selectedIndex] : searchTerm;
-    if (!term.trim()) return;
 
     router.push(`/products?search=${encodeURIComponent(term)}`);
     setShowSuggestions(false);

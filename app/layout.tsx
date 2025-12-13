@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CartWishlistProvider } from "@/Providers/CartWishlistProvider";
 import { Toaster } from "@/components/ui/sonner";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,11 +42,13 @@ export default function RootLayout({
         <CartWishlistProvider>
           <ContactHeader />
           <div className="sticky top-0 z-50 shadow-md">
-            <Navbar />
+            <Suspense fallback={null}>
+              <Navbar />
+            </Suspense>
           </div>
           {children}
           <Footer />
-          <Toaster position="top-right"/>
+          <Toaster position="top-right" />
         </CartWishlistProvider>
       </body>
     </html>

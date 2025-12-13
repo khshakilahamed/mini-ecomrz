@@ -20,8 +20,6 @@ const Navbar = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [tabValue, setTabValue] = useState<"cart" | "wishlist">("cart");
 
-  console.log("isOpenModal: ", isOpenModal);
-
   return (
     <>
       <div className="bg-secondary">
